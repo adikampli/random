@@ -31,7 +31,7 @@ public class RangeGenerator {
                     return rangeEnd;
                 }), Collectors.counting()));
         Map<Integer, Long> sortedMap = new TreeMap<>(rangeMap);
-        sortedMap.entrySet().stream().forEach(i -> printRange((i.getKey() - 5), i.getKey(), i.getValue()));
+        sortedMap.entrySet().forEach(i -> printRange((i.getKey() - 5), i.getKey(), i.getValue()));
     }
 
     static void printRange(int min, int max, long count) {
