@@ -44,7 +44,7 @@ public class DoublyLinkedList {
             while (current != null && !current.getEmployee().equals(existingEmployee)) {
                 current = current.getNext();
             }
-            if(current == null)
+            if (current == null)
                 return false;
 
             EmployeeNode newNode = new EmployeeNode(newEmployee);
@@ -52,7 +52,7 @@ public class DoublyLinkedList {
             newNode.setPrevious(current.getPrevious());
             current.setPrevious(newNode);
 
-            if(current == head) {
+            if (current == head) {
                 head = newNode;
             } else {
                 current.getPrevious().setNext(newNode);

@@ -1,5 +1,3 @@
-import javax.naming.spi.ObjectFactoryBuilder;
-
 class SingletonClass {
     private static SingletonClass singleton = null;
 
