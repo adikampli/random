@@ -1,3 +1,5 @@
+package ds;
+
 class SingletonClass {
     private static SingletonClass singleton = null;
 

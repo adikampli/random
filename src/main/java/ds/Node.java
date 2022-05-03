@@ -1,25 +1,27 @@
+package ds;
+
 import java.util.concurrent.*;
 
-public class Node {
+public class Node<E> {
     //    Node prev;
-    int ele;
-    Node next;
+    E ele;
+    Node<E> next;
 
-    public Node(int ele) {
+    public Node(E ele) {
         this.ele = ele;
     }
 }
 
 class CustomLL {
-    Node first;
+    Node<Integer> first;
 
-    void add(int ele) {
-        Node newNode = new Node(ele);
+    void add(Integer ele) {
+        Node<Integer> newNode = new Node<>(ele);
         if (first == null || ele < first.ele) {
             newNode.next = first;
             first = newNode;
         } else {
-            Node current = first;
+            Node<Integer> current = first;
             while (current.next != null && ele > current.next.ele) {
                 current = current.next;
             }
@@ -52,10 +54,10 @@ class CustomLL {
 
     @Override
     public String toString() {
-        Node ele = first;
+        Node<Integer> ele = first;
         StringBuilder builder = new StringBuilder();
         while (ele != null) {
-            builder.append(ele.ele + " -> ");
+            builder.append(ele.ele).append(" -> ");
             ele = ele.next;
         }
         return builder.toString();
@@ -77,5 +79,5 @@ class Test1 {
         Future<String> f = CompletableFuture.supplyAsync(() -> "test", executorService);
         String s = f.get(1, TimeUnit.SECONDS);
         System.out.println(s);
-        }
     }
+}

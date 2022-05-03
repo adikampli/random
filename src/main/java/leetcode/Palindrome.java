@@ -1,7 +1,5 @@
 package leetcode;
 
-import jdk.jfr.Unsigned;
-
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -21,7 +19,7 @@ public class Palindrome {
             x = x / 10;
         }
 
-        int a = 10 + ('9'-'0');
+        int a = 10 + ('9' - '0');
         while (stack.peek() != null) {
             if (stack.pop() != queue.poll())
                 return false;

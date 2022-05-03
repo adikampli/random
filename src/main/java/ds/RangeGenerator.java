@@ -1,4 +1,4 @@
-/*List = [1,3,5,3,7,18], non negative 
+package ds;/*List = [1,3,5,3,7,18], non negative
 step = 5, positive number
 
 Output:

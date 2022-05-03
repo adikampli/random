@@ -33,6 +33,14 @@ public class BinaryTreeOld {
         if (right != null) right.inOrderTraversal();
     }
 
+    public void rightOrderTraversal() {
+        System.out.println(data);
+        if(right != null) {
+//            System.out.println(right.data);
+            right.rightOrderTraversal();
+        }
+    }
+
     public static void main(String[] args) {
         BinaryTreeOld node = new BinaryTreeOld(29);
 
@@ -44,6 +52,8 @@ public class BinaryTreeOld {
         node.inOrderTraversal();
         System.out.println();
         node.preOrderTraversal();
+        System.out.println("RIghtOrder ");
+        node.rightOrderTraversal();
     }
 
 }

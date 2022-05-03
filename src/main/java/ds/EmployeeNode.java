@@ -1,3 +1,5 @@
+package ds;
+
 public class EmployeeNode {
 
     private Employee employee;

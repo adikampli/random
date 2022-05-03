@@ -1,3 +1,5 @@
+package ds;
+
 class SinglyNode {
     SinglyNode next;
     String ele;

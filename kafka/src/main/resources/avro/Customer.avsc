@@ -1,0 +1,24 @@
+{
+  "type": "record",
+  "name": "Customer",
+  "namespace": "com.adi",
+  "doc": "Customer",
+  "fields": [
+    {
+      "name": "first_name",
+      "type": "string",
+      "doc": "first name"
+    },
+    {
+      "name": "age",
+      "type": "int",
+      "doc": "age"
+    },
+    {
+      "name": "email_subscribed",
+      "type": "boolean",
+      "doc": "email subscription",
+      "default": true
+    }
+  ]
+}
