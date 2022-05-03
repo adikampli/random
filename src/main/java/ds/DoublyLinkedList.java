@@ -1,5 +1,7 @@
 package ds;
 
+import random.Employee;
+
 public class DoublyLinkedList {
 
     private EmployeeNode head;

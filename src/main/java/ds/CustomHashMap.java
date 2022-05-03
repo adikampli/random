@@ -1,45 +1,47 @@
 package ds;
 
-public class Hashtable {
+public class CustomHashMap<K, V> {
 
-    private class HashEntry {
-        private String key;
-        private String value;
-        private HashEntry next;
+    private static class Entry<K, V> {
+        private K key;
+        private V value;
+        private Entry<K, V> next;
     }
 
-    private final HashEntry[] entries;
+    private final Entry<K, V>[] entries;
     private int capacity;
     private int size = 0;
-    private float loadFactor = 0.75f;
+    private final float loadFactor = 0.75f;
 
-    public Hashtable(int capacity) {
-        entries = new HashEntry[capacity];
+    @SuppressWarnings("unchecked")
+    public CustomHashMap(int capacity) {
+        entries = (Entry<K, V>[]) new Entry<?, ?>[capacity];
         this.capacity = capacity;
     }
 
     public void resizeAndHash() {
-        for (HashEntry e : entries) {
+        for (Entry<K, V> e : entries) {
             if (e != null) size++;
         }
         if (size > capacity * loadFactor) {
-            HashEntry[] newEntries = new HashEntry[capacity * 2];
+            @SuppressWarnings("unchecked")
+            Entry<K, V>[] newEntries = (Entry<K, V>[]) new Entry<?, ?>[capacity * 2];
             System.arraycopy(entries, 0, newEntries, 0, capacity);
+
             capacity = capacity * 2;
         }
-
     }
 
-    public void put(String key, String value) {
+    public void put(K key, V value) {
         int hash = key.hashCode() % capacity;
 
-        HashEntry entry = new HashEntry();
+        Entry<K, V> entry = new Entry<>();
         entry.key = key;
         entry.value = value;
         if (entries[hash] == null) {
             entries[hash] = entry;
         } else {
-            HashEntry curr = entries[hash];
+            Entry<K, V> curr = entries[hash];
             while (curr.next != null) {
                 curr = curr.next;
             }
@@ -47,26 +49,26 @@ public class Hashtable {
         }
     }
 
-    public String get(String key) {
+    public V get(K key) {
         int hash = key.hashCode() % capacity;
 
-        HashEntry curr = entries[hash];
+        Entry<K, V> curr = entries[hash];
         while (curr != null) {
             if (curr.key.equals(key))
                 return curr.value;
             curr = curr.next;
         }
-        return "Not Fo";
+        return (V) "Not Fo";
     }
 
     public static void main(String[] args) {
-        Hashtable table = new Hashtable(10);
+        CustomHashMap<String, String> table = new CustomHashMap<>(10);
 
         table.put("asdas", "asd");
         table.put("fdgd", "ghf");
         table.put("dfg", "kjl");
         table.put("ee", "tyu");
 
-        System.out.println(table.get("df1"));
+        System.out.println(table.get("dfg"));
     }
 }

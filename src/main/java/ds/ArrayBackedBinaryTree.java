@@ -1,39 +1,52 @@
 package ds;
 
 
-import java.util.logging.Logger;
+import lombok.extern.slf4j.Slf4j;
 
-public class ArrayBackedBinaryTree {
+@Slf4j
+public class ArrayBackedBinaryTree<E> {
 
-    Logger log = Logger.getLogger(this.getClass().toString());
+    E[] arr;
+    int count;
 
-    int[] arr;
-
+    @SuppressWarnings("unchecked")
     public ArrayBackedBinaryTree(int size) {
-        this.arr = new int[size];
+        this.arr = (E[]) new Object[size];
     }
 
-    public void insert(int val) {
+    public void insert(E val) {
+        if (count <= arr.length)
+            arr[count++] = val;
+    }
+
+    public void delete(E val) {
 
     }
 
-    public void delete(int val) {
-
-    }
-
-    public int search(int val) {
+    public int search(E val) {
 
         return -1;
     }
 
-    public static void main(String[] args) {
-        ArrayBackedBinaryTree tree = new ArrayBackedBinaryTree(10);
-        tree.insert(10);
-        tree.insert(30);
-        tree.insert(20);
-        tree.insert(0);
+    public void printRightTree() {
+        log.info("Printing right side elements");
 
-//        log.info("" + tree.search(22));
+        for (int j = 0; j < arr.length && arr[j] != null; j = j * 2 + 2) {
+            log.info("{}", arr[j]);
+        }
+    }
+
+    public static void main(String[] args) {
+        ArrayBackedBinaryTree<Integer> tree = new ArrayBackedBinaryTree<>(20);
+        tree.insert(1);
+        tree.insert(2);
+        tree.insert(3);
+        tree.insert(null);
+        tree.insert(5);
+        tree.insert(null);
+        tree.insert(4);
+
+        tree.printRightTree();
     }
 
 }

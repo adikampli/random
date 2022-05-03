@@ -1,15 +1,18 @@
+package ds;
+
 import java.util.AbstractList;
 
-public class ArrayList extends AbstractList<String> {
-    String[] arr;
+public class CustomArrayList<E> extends AbstractList<E> {
+    E[] arr;
     int size = 0, capacity = 10;
 
-    public ArrayList() {
-        this.arr = new String[capacity];
+    @SuppressWarnings("unchecked")
+    public CustomArrayList() {
+        this.arr = (E[]) new Object[capacity];
     }
 
     @Override
-    public String get(int index) {
+    public E get(int index) {
         return arr[index];
     }
 
@@ -19,28 +22,27 @@ public class ArrayList extends AbstractList<String> {
     }
 
     @Override
-    public boolean add(String ele) {
+    public boolean add(E ele) {
         if (size < capacity) {
             arr[size++] = ele;
             return true;
         }
-        String[] newArr = new String[size * (1 / 2)];
+
+        @SuppressWarnings("unchecked")
+        E[] newArr = (E[]) new Object[size / 2];
+
         System.arraycopy(arr, 0, newArr, 0, size);
         arr = newArr;
         newArr[size++] = ele;
         return true;
     }
-}
 
-class TestAL {
     public static void main(String[] args) {
-        ArrayList list = new ArrayList();
+        CustomArrayList<String> list = new CustomArrayList<>();
         list.add("one");
         list.add("two");
-        list.add("thress");
+        list.add("three");
 
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
-        }
+        list.forEach(System.out::println);
     }
 }

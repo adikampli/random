@@ -1,5 +1,7 @@
 package ds;
 
+import random.Employee;
+
 public class EmployeeNode {
 
     private Employee employee;

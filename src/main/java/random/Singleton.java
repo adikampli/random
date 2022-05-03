@@ -1,4 +1,4 @@
-package ds;
+package random;
 
 class SingletonClass {
     private static SingletonClass singleton = null;

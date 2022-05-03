@@ -1,45 +1,31 @@
 package ds;
 
-class SinglyNode {
-    SinglyNode next;
-    String ele;
+public class SinglyLinkedList<E> {
+    LLNode<E> head = null;
 
-    public SinglyNode(SinglyNode next, String ele) {
-        this.next = next;
-        this.ele = ele;
-    }
-
-    public String getEle() {
-        return ele;
-    }
-}
-
-public class SinglyLinkedList {
-    SinglyNode head = null;
-
-    public void add(String ele) {
-        SinglyNode newNode;
+    public void add(E ele) {
+        LLNode<E> newLLNode;
         if (head == null) {
-            newNode = new SinglyNode(null, ele);
+            newLLNode = new LLNode<E>(ele, null);
         } else {
-            newNode = new SinglyNode(head, ele);
+            newLLNode = new LLNode<E>(ele, head);
         }
-        head = newNode;
+        head = newLLNode;
     }
 
-    public String get() {
+    public E get() {
         return null;
     }
 
-    public String remove() {
+    public E remove() {
         return null;
     }
 
     public void reverse() {
-        SinglyNode curr = head;
-        SinglyNode prev = null, temp = null;
+        LLNode<E> curr = head;
+        LLNode<E> prev = null, temp = null;
 
-        while(curr != null) {
+        while (curr != null) {
             temp = curr;
             curr = curr.next;
 
@@ -51,21 +37,21 @@ public class SinglyLinkedList {
     }
 
     public static void main(String[] args) {
-        SinglyLinkedList node = new SinglyLinkedList();
+        SinglyLinkedList<String> node = new SinglyLinkedList<>();
         node.add("test");
         node.add("test2");
         node.add("test3");
 
-        SinglyNode current = node.head;
+        LLNode<String> current = node.head;
         while (current != null) {
-            System.out.println(current.getEle());
+            System.out.println(current.val);
             current = current.next;
         }
 
         node.reverse();
         current = node.head;
         while (current != null) {
-            System.out.println(current.getEle());
+            System.out.println(current.val);
             current = current.next;
         }
     }
